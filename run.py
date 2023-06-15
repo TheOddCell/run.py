@@ -90,3 +90,10 @@ def py():
     print("_______________________\nThis Program Was run by RUN.PY\n_______________________\n") # Show End Of Program
 def devhelp():
     print("Use showhelp to open normal runpy help\nUse py to run.py\nSet runpyfilename To run a diffrent file\n")
+def createfile():
+    if not path.is_file(): # File Needs Setup
+        print("Setting Up File: The File '" + runpyfilename + "' does not exist.") # Show Message
+        f = open(runpyfilename, "w") # Open File and Write Code + Message...
+        f.write(f"# This IPYthon Program ({runpyfilename}) Will Be Run By RUN.PY.\n# For More Info, Type 'python3 run.py help' (whithout the qoutes!) for info\n# This is Dummy Code; Replace This Later.\n!ls\n%magic\n?help\nprint(\"hello ipython!\")") # cont.
+        f.close() # close File
+        print("This File Was Setup!") # More Info
