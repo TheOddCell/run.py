@@ -33,7 +33,7 @@ log = open("runpy.log", "a")
 def wtl(messagetolog): # WriteToLog
     log.write(messagetolog + "\n")
 
-wtl("Starting Program...")
+wtl("------------------\nStarting Program...")
 
 # ------------------------Code For RUNPY Is Below.----------------
 # IF moment...
