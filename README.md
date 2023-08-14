@@ -10,5 +10,5 @@ Use/Generate:
 Get Help:
 `python3 run.py help`
 
-For More Help, Look at the DETAILD comments in this nice file :\)
+For More Help, Look at the DETAILD comments in this nice file :)
 #### in progress!
