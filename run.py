@@ -2,6 +2,7 @@
 import os
 import sys
 from pathlib import Path
+from datetime import datetime, timezone
 ver = "1.0"
 vernum = 1.0
 # The RUNPY thingy
@@ -20,6 +21,7 @@ vernum = 1.0
 #   4. add the code "run.py()" to run or "run.showhelp()" to show help at the end.
 # Done!
 # To run the addon, run THAT py!
+# for AutoRun, make the addon name "run.addon.py", without the qwotes.
 
 # -----------------------settings---------------------
 
@@ -33,9 +35,13 @@ log = open("runpy.log", "a")
 def wtl(messagetolog): # WriteToLog
     log.write(messagetolog + "\n")
 
-wtl("------------------\nStarting Program...")
+
+wtl(f"------------------\nStarting Program...\nUTC time is {datetime.now(timezone.utc)}\nUTC time (ms) is {datetime.now(timezone.utc).timestamp() * 1000}\nSimplifed UTC: {datetime.now(timezone.utc)}")
 
 # ------------------------Code For RUNPY Is Below.----------------
+# Used for audorun addons
+addonpath = Path("./run.addon.py")
+addon = open("run.addon.py")
 # IF moment...
 runpyifmessage = ""
 if path.is_file():
@@ -49,14 +55,21 @@ else:
 message = f"\nRunPY IPython Launcher\nStart IPY files with the PYTHON3 command!\nTo Use, Type 'python3 run.py' (without qoutes)\nOr Incorperate into your main.py by typing in \"import run\" and putting this file in.\n\n{runpyifmessage} "# This prob. will start a long story...
 
 def runit():
-    wtl("Running...")
-    os.system("ipython3 " + runpyfilename) # Run.PY the program!11!!!1!!1!!1!!!
-    print("_______________________\nThis Program Was run by RUN.PY\n_______________________\n") # Show End Of Program
-    wtl("Closing Program...")
-    log.close()
-    exit() # Goodbye!
+    if addonpath.is_file:
+        os.system("python3 run.addon.py") # run addons
+        wtl("run.py is autorunning addon. to see addon code, open run.addon.py")
+        wtl("to stop autorunning addons, remove, rename or move run.addon.py")
+    else:
+        print("\n_______________________\nRUN.PY IPython Launcher\n_______________________\n") # wow!
+        wtl("Running...")
+        os.system("ipython3 " + runpyfilename) # Run.PY the program!11!!!1!!1!!1!!!
+        print("_______________________\nThis Program Was run by RUN.PY\n_______________________\n") # Show End Of Program
+        wtl("Closing Program...")
+        log.close()
+        exit() # Goodbye!
 
 def showhelp():
+    print("\n_______________________\nRUN.PY IPython Launcher\n_______________________\n") # wow!
     wtl("Showing Help GUI")
     print(message) # Backup! 
     f = open(helpfilename, "w") # Open File and 
@@ -68,9 +81,6 @@ def showhelp():
     log.close()
     exit()
 
-
-# Show RUNPY splash
-print("\n_______________________\nRUN.PY IPython Launcher\n_______________________\n") # wow!
 if sys.argv == ['run.py', 'help']: # Sombody Wants Help?
     showhelp()
 elif not path.is_file(): # File Needs Setup
