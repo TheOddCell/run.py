@@ -98,6 +98,8 @@ elif sys.argv == ['./run.py']: # long story short, we need ./ to work
     runit()
 elif sys.argv == ['run.py']:
     runit()
+else:
+    print("Has Been Imported\nThanks for using RUNPY!\n") # They should use the included functions
 del runit
 del showhelp
 def showhelp():
