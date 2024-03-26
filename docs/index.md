@@ -23,4 +23,4 @@ To run the addon, run THAT py!
 
 for AutoRun, make the addon name "run.addon.py", without the qwotes.
 
-[my main website](oddcell.ca)
+[my main website](http://oddcell.ca/)
