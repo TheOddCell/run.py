@@ -21,6 +21,6 @@ Done!
 
 To run the addon, run THAT py!
 
-for AutoRun, make the addon name "run.addon.py", without the qwotes.
+for AutoRun, make the addon name "run.addon.py", without the quotes.
 
 [my main website](http://oddcell.ca/)
